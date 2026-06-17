@@ -1,12 +1,12 @@
 import os
 from dataclasses import dataclass
+from dotenv import load_dotenv
+
 import truststore
 
 # Use the OS trust store (macOS keychain) so the corporate Zscaler root CA
 # is trusted, just like it is in the browser. Must run before any requests.
 truststore.inject_into_ssl()
-
-from dotenv import load_dotenv
 
 
 load_dotenv()
