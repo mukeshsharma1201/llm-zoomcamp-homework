@@ -21,7 +21,7 @@ class LLMProviderConfig:
 
 def get_llm_provider_config() -> LLMProviderConfig:
     return LLMProviderConfig(
-        api_key=os.getenv("GOOGLE_API_KEY"),
-        base_url=os.getenv("GOOGLE_BASE_URL"),
-        model=os.getenv("LLM_MODEL"),
+        api_key=os.getenv("GOOGLE_API_KEY", ""),
+        base_url=os.getenv("GOOGLE_BASE_URL", ""),
+        model=os.getenv("LLM_MODEL", ""),
     )
