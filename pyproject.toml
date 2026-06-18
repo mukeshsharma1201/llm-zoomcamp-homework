@@ -11,3 +11,9 @@ dependencies = [
     "requests>=2.34.2",
     "truststore>=0.10.4",
 ]
+
+# This repo is a collection of runnable course scripts, not an installable
+# package, so tell uv not to try building/installing the project itself.
+# The project root is put on sys.path via a .pth file in the venv instead.
+[tool.uv]
+package = false

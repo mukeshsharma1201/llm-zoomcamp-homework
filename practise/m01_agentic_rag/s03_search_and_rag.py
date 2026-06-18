@@ -1,8 +1,16 @@
-from s02_courses_list import load_documents
-from textwrap import dedent
-from minsearch import Index
-from openai import OpenAI
-from config import get_llm_provider_config
+import sys
+from pathlib import Path
+
+# Put the project root on sys.path so `from src....` works when run directly.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+from textwrap import dedent  # noqa: E402
+
+from minsearch import Index  # noqa: E402
+from openai import OpenAI  # noqa: E402
+
+from practise.config import get_llm_provider_config  # noqa: E402
+from practise.m01_agentic_rag.s02_courses_list import load_documents  # noqa: E402
 
 
 def retrieval(user_question):
@@ -70,7 +78,7 @@ def llm_call(system_prompt, user_prompt):
         ],
     )
     try:
-        print(_resp)
+        print(f"Tokens Used {_resp.usage.total_tokens}")
         return _resp.choices[0].message.content
     except Exception as e:
         print(e)
@@ -78,7 +86,7 @@ def llm_call(system_prompt, user_prompt):
 
 
 if __name__ == "__main__":
-    user_question = "what is my name?"
+    user_question = "I just discovered the course. Can I join now?"
 
     # Retrieval - search for relevant sections in the course materials
     search_results = retrieval(user_question)

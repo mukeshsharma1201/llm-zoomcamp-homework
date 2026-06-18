@@ -1,6 +1,12 @@
-from openai import OpenAI
+import sys
+from pathlib import Path
 
-from config import get_llm_provider_config
+# Put the project root on sys.path so `from src....` works when run directly.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+from openai import OpenAI  # noqa: E402
+
+from practise.config import get_llm_provider_config  # noqa: E402
 
 cfg = get_llm_provider_config()
 client = OpenAI(api_key=cfg.api_key, base_url=cfg.base_url)
