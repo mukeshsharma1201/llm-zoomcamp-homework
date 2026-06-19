@@ -18,6 +18,23 @@ class RAGBase:
             {context}
         """).strip()
 
+    search_tool = {
+        "type": "function",
+        "name": "search",
+        "description": "Seaerch the FAQ database of the course for entries matching the given query.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "Search query text to look up in the course FAQ.",
+                }
+            },
+            "required": ["query"],
+            "additionalProperties": False,
+        },
+    }
+
     def __init__(
         self,
         index,

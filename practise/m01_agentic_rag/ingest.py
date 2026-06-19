@@ -51,11 +51,14 @@ def build_index(documents):
     return index
 
 
-def build_text_index(documents):
+def build_text_index(documents, clear=False):
     index = TextSearchIndex(
         text_fields=["section", "question", "answer"],
         keyword_fields=["course"],
         db_path="faq.db",
     )
+    if clear:
+        index.clear()
+
     index.fit(documents)
     return index
