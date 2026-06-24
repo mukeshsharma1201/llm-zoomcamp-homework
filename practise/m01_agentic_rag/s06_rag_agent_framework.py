@@ -1,8 +1,3 @@
-from toyaikit.llm import OpenAIClient
-from toyaikit.tools import Tools
-from toyaikit.chat import IPythonChatInterface
-from toyaikit.chat.runners import OpenAIResponsesRunner, DisplayingRunnerCallback
-
 import json
 import sys
 from pathlib import Path
@@ -41,7 +36,7 @@ search_tool = {
     "type": "function",
     "function": {
         "name": "search",
-        "description": "Seaerch the FAQ database of the course for entries matching the given query.",
+        "description": "Search the FAQ database of the course for entries matching the given query.",
         "parameters": {
             "type": "object",
             "properties": {
@@ -97,7 +92,7 @@ def agent_loop(user_question, system_instructions=SYSTEM_PROMPT) -> str:
     itrn = 1
 
     msg_history: list[dict[str, object]] = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": system_instructions},
         {"role": "user", "content": user_question},
     ]
 
@@ -146,7 +141,7 @@ def agent_loop(user_question, system_instructions=SYSTEM_PROMPT) -> str:
 
 
 if __name__ == "__main__":
-    user_question = "how to install olama?"
+    user_question = "what is my name?"
     print("USER: ", user_question)
 
     answer = agent_loop(user_question)

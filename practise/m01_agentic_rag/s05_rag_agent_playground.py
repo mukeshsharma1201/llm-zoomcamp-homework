@@ -36,7 +36,7 @@ search_tool = {
     "type": "function",
     "function": {
         "name": "search",
-        "description": "Seaerch the FAQ database of the course for entries matching the given query.",
+        "description": "Search the FAQ database of the course for entries matching the given query.",
         "parameters": {
             "type": "object",
             "properties": {
@@ -60,7 +60,7 @@ def search(query):
     )
     index.fit(documents)
 
-    # search / retrival
+    # search / retrieval
     search_results = index.search(
         query,
         boost_dict={"question": 2.0, "section": 0.5},
@@ -92,7 +92,7 @@ def agent_loop(user_question, system_instructions=SYSTEM_PROMPT) -> str:
     itrn = 1
 
     msg_history: list[dict[str, object]] = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": system_instructions},
         {"role": "user", "content": user_question},
     ]
 
