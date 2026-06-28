@@ -8,8 +8,12 @@ import truststore
 # is trusted, just like it is in the browser. Must run before any requests.
 truststore.inject_into_ssl()
 
-
 load_dotenv()
+
+
+@dataclass(frozen=True)
+class DBConfig:
+    uri: str
 
 
 @dataclass(frozen=True)
@@ -25,3 +29,7 @@ def get_llm_provider_config() -> LLMProviderConfig:
         base_url=os.getenv("GOOGLE_BASE_URL", ""),
         model=os.getenv("LLM_MODEL", ""),
     )
+
+
+def get_db_config() -> DBConfig:
+    return DBConfig(uri=os.getenv("PG_CONN_STR", ""))
