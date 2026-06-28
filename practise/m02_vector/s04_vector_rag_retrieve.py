@@ -28,6 +28,7 @@ query = "I just discovered the course. Can I still join it?"
 query_vector = model.encode(query)
 
 # re-open the connection to previously created index
+# index is created in s03_vector_rag_ingest.py
 vs_index = VectorSearchIndex(
     keyword_fields=["course"], mode="ivf", db_path="faq_vectors2.db"
 )
