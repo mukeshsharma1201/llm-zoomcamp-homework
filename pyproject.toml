@@ -7,11 +7,14 @@ requires-python = ">=3.12"
 dependencies = [
     "gitsource>=0.0.5",
     "minsearch>=0.1.0",
+    "onnxruntime>=1.27.0",
     "openai>=2.41.1",
+    "psycopg[binary]>=3.3.4",
     "python-dotenv>=1.2.2",
     "requests>=2.34.2",
     "sentence-transformers>=5.6.0",
     "sqlitesearch>=0.1.0",
+    "tokenizers>=0.22.2",
     "toyaikit>=0.0.11",
     "truststore>=0.10.4",
 ]
@@ -21,3 +24,8 @@ dependencies = [
 # The project root is put on sys.path via a .pth file in the venv instead.
 [tool.uv]
 package = false
+
+[dependency-groups]
+dev = [
+    "huggingface-hub>=1.21.0",
+]
