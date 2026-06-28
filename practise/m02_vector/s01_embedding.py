@@ -37,10 +37,12 @@ vectors_arr = np.array(vectors)
 # user query - retrieval
 query = "Can I still join the course after the start date?"
 v_query = model.encode(query)
-scores = vectors_arr.dot(v_query) # dot product because model already outputs cosine values
+scores = vectors_arr.dot(
+    v_query
+)  # dot product because model already outputs cosine values
 
 # top document - max value
-idx = np.argmax(scores) # argmax - return largest value index
+idx = np.argmax(scores)  # argmax - return largest value index
 print(idx)
 print(documents[idx])
 
@@ -50,5 +52,4 @@ top5 = np.argsort(scores)[-5:]
 top5 = top5[::-1]
 
 # OR just negate the scores
-top5 = np.argsort(-scores)[:5] # top 5
-
+top5 = np.argsort(-scores)[:5]  # top 5
