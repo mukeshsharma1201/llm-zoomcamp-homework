@@ -9,7 +9,6 @@ class GeminiChatCompletionsRunner(OpenAIChatCompletionsRunner):
         self,
         previous_messages=None,
     ):
-
         if not previous_messages:
             return [
                 ChatCompletionSystemMessageParam(
@@ -27,7 +26,6 @@ class GeminiChatCompletionsRunner(OpenAIChatCompletionsRunner):
         callback=None,
         output_format=None,
     ):
-
         result = super().loop(
             prompt=prompt,
             previous_messages=previous_messages,

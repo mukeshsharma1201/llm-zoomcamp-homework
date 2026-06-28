@@ -109,11 +109,13 @@ def agent_loop(user_question, system_instructions=SYSTEM_PROMPT) -> str:
         )
 
         # append assistant message to history
-        msg_history.append({
-            "role": resp.choices[0].message.role,
-            "content": resp.choices[0].message.content,
-            "tool_calls": resp.choices[0].message.tool_calls,
-        })
+        msg_history.append(
+            {
+                "role": resp.choices[0].message.role,
+                "content": resp.choices[0].message.content,
+                "tool_calls": resp.choices[0].message.tool_calls,
+            }
+        )
 
         # if llm wants to use tools - use tool
         tool_calls = resp.choices[0].message.tool_calls
